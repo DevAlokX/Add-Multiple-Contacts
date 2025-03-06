@@ -1,0 +1,51 @@
+<template>
+    
+        <div class = "slds-text-heading_large slds-modal__header">
+            Add Multiple Contacts
+        </div>
+        <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>First Name</td>
+                            <td>Last Name <span class="slds-text-color_destructive">*</span></td>
+                            <td>Email</td>
+                            <td>Gender</td>
+                            
+                                <td>
+                                    <lightning-button-icon icon-name="utility:add" title="Add New Contact"
+                                        class="slds-m-left_xx-small" onclick={addNewClickHandler}></lightning-button-icon>
+                                </td>                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={contacts} for:item="contact">
+                            
+                        <tr key={contact.tempId}> 
+                            <td>
+                                <lightning-input label="First Name" name="FirstName" variant = "label-hidden" placeholder="Enter first name" data-temp-id ={contact.tempId} onblur={onValueChange}></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input label="Last Name" name="LastName" variant = "label-hidden" placeholder="Enter last name" data-temp-id ={contact.tempId} onblur={onValueChange} required></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-input label="Email" name="Email" variant = "label-hidden" placeholder="Enter email" data-temp-id ={contact.tempId} onblur={onValueChange}></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-combobox label="Gender" name="GenderIdentity" variant="label-hidden" placeholder="Select Gender" data-temp-id ={contact.tempId} options={genderPicklistValues} onblur={onValueChange}></lightning-combobox>
+                            </td>
+                            <td>
+                                <lightning-button-icon icon-name = "utility:delete" title="delete Contact" class="slds-m-left_xx-small" data-temp-id ={contact.tempId} onclick={deleteRow}>
+                
+                                </lightning-button-icon>
+                            </td>
+                        </tr>
+                        </template>
+                    </tbody>
+                </table>
+        </div>
+        <div class = "slds-modal__footer slds-text-align_right">
+            <lightning-button label="Submit" variant="brand" onclick={submitClickHandler}></lightning-button>
+        </div>
+    
+</template>
