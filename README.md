@@ -1,1 +1,1 @@
-this component you can add in action button. it will help you to create multiple contacts of related account
+You can add this component to the action button. It will help you create multiple contacts for the related account.
